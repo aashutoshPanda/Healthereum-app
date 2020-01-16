@@ -1,0 +1,24 @@
+{
+  "name": "hospital",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "npx nodemon index.js",
+    "client": "cd client && npm start",
+    "start": "concurrently \"npx nodemon index.js \" \"cd client && npm start\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react-navigation": "^4.0.10",
+    "react-navigation-tabs": "^2.5.6",
+    "react-native-gesture-handler": "^1.0.0",
+    "react-native-reanimated": "^1.0.0-alpha",
+    "react-native-screens": "^1.0.0-alpha",
+    "react-navigation-stack": "^1.10.3",
+    "react-navigation-drawer": "^2.3.3"
+  }
+}
