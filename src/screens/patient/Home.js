@@ -1,17 +1,32 @@
 import React from "react";
-import { Text, StyleSheet, SafeAreaView } from "react-native";
+import { StyleSheet } from "react-native";
+import PatientHeader from "../../components/PatientHeader";
+import { Container, Content } from "native-base";
+import HistoryCard from "../../components/HistoryCard";
 
 const Home = () => {
   return (
-    <SafeAreaView>
-      <Text style={styles.text}>SearchPatient</Text>
-    </SafeAreaView>
+    <Container style={styles.Container}>
+      <PatientHeader />
+      <Content padder>
+        <HistoryCard />
+      </Content>
+    </Container>
   );
 };
 
 const styles = StyleSheet.create({
   text: {
     fontSize: 30
+  },
+  Container: {
+    paddingTop: 22
+  },
+  Header: {
+    height: 70
+  },
+  HeaderBody: {
+    marginLeft: 20
   }
 });
 
