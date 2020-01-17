@@ -1,13 +1,33 @@
 import React from "react";
-import { Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
+import { Container, Content } from "native-base";
+import HospitalHeader from "../../components/HospitalHeader";
+import Application from "../../components/ApplicationCard";
 
+// galti ho gayi this is for doc not hospital
 const MyAppointments = () => {
-  return <Text style={styles.text}>MyAppointments</Text>;
+  return (
+    <Container style={styles.Container}>
+      <HospitalHeader />
+      <Content padder>
+        <Application />
+      </Content>
+    </Container>
+  );
 };
 
 const styles = StyleSheet.create({
   text: {
     fontSize: 30
+  },
+  Container: {
+    paddingTop: 22
+  },
+  Header: {
+    height: 70
+  },
+  HeaderBody: {
+    marginLeft: 20
   }
 });
 

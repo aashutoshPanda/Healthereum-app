@@ -2,14 +2,15 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import PatientHeader from "../../components/PatientHeader";
 import { Container, Content } from "native-base";
-import HistoryCard from "../../components/HistoryCard";
-
+import SearchBar from "../../components/SearchBar";
+import HospitalCard from "../../components/HospitalCard";
 const Home = () => {
   return (
     <Container style={styles.Container}>
       <PatientHeader />
       <Content padder>
-        <HistoryCard />
+        <SearchBar />
+        <HospitalCard />
       </Content>
     </Container>
   );
