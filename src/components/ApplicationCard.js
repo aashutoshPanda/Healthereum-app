@@ -13,11 +13,15 @@ import {
 } from "native-base";
 import DoctorPicker from "../components/DoctorPicker";
 export default class CardImageExample extends Component {
+  state = {
+    fontLoaded: false
+  };
   async componentDidMount() {
     await Font.loadAsync({
       Roboto: require("../../node_modules/native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("../../node_modules/native-base/Fonts/Roboto_medium.ttf")
     });
+    this.setState({ fontLoaded: true });
   }
   state = {
     showButtons: true
@@ -28,6 +32,10 @@ export default class CardImageExample extends Component {
     });
   };
   render() {
+    if (this.state.fontLoaded == false) {
+      return null;
+    }
+
     const doctorSelectionPanel = (
       <CardItem
         style={{

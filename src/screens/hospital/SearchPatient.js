@@ -1,18 +1,33 @@
 import React from "react";
-import { Text, StyleSheet, SafeAreaView } from "react-native";
-
-const SearchPatient = () => {
+import { StyleSheet } from "react-native";
+import { Container, Content } from "native-base";
+import HospitalHeader from "../../components/HospitalHeader";
+import Application from "../../components/ApplicationCard";
+import SearchBar from "../../components/SearchBar";
+const MyAppointments = () => {
   return (
-    <SafeAreaView>
-      <Text style={styles.text}>SearchPatient</Text>
-    </SafeAreaView>
+    <Container style={styles.Container}>
+      <HospitalHeader />
+      <Content padder>
+        <SearchBar />
+      </Content>
+    </Container>
   );
 };
 
 const styles = StyleSheet.create({
   text: {
     fontSize: 30
+  },
+  Container: {
+    paddingTop: 22
+  },
+  Header: {
+    height: 70
+  },
+  HeaderBody: {
+    marginLeft: 20
   }
 });
 
-export default SearchPatient;
+export default MyAppointments;

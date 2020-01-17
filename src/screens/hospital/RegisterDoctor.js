@@ -1,14 +1,33 @@
 import React from "react";
-import { Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
+import { Container, Content } from "native-base";
+import HospitalHeader from "../../components/HospitalHeader";
+import DoctorRegisterForm from "../../components/DoctorRegisterForm";
 
-const RegisterDoctor = () => {
-  return <Text style={styles.text}>RegisterDoctor</Text>;
+const MyAppointments = () => {
+  return (
+    <Container style={styles.Container}>
+      <HospitalHeader />
+      <Content padder>
+        <DoctorRegisterForm />
+      </Content>
+    </Container>
+  );
 };
 
 const styles = StyleSheet.create({
   text: {
     fontSize: 30
+  },
+  Container: {
+    paddingTop: 22
+  },
+  Header: {
+    height: 70
+  },
+  HeaderBody: {
+    marginLeft: 20
   }
 });
 
-export default RegisterDoctor;
+export default MyAppointments;
