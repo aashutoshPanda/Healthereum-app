@@ -1,55 +1,49 @@
-import { ADD_DOC, LOAD_FONT } from "../actions/actionTypes";
-import { ADD_PATIENT } from "../actions/actionTypes";
-// import api from "../api";
-// import { getData } from "../helper/asyncStore";
+import {
+  LOAD_FONT,
+  LOGIN_SUCCESS,
+  STORE_USER_DATA
+} from "../actions/actionTypes";
 
-// export const addDoc = postdata => {
+import api from "../api";
+
+// export const login = loginData => {
 //   return async dispatch => {
-//     // dispatch(addTodoStarted());
-
-//     const googleData = await JSON.parse(await getData("userInfo"));
-//     console.log("post data combined", {
-//       ...postdata,
-//       googleData
-//     });
-//     api
-//       .post("/doctor/add", { postdata, googleData })
+//     await api
+//       .post("/user/login", loginData)
 //       .then(val => {
-//         console.log("doneee", val.data);
-
-//         dispatch({ type: ADD_DOC, payload: val.data });
-//         console.log("post done");
+//         dispatch({ type: LOGIN_SUCCESS, payload: true });
+//         const userData = {
+//           cred: loginData,
+//           token: val.data.token.key,
+//           id: val.data.token.user,
+//           type: val.data.user_type
+//         };
+//         console.log("data stored and action called", userData);
+//         dispatch({ type: STORE_USER_DATA, payload: userData });
 //       })
 //       .catch(function(error) {
 //         // handle error
-//         console.log("post doc error", error);
+//         dispatch({ type: LOGIN_SUCCESS, payload: false });
+//         console.log("login  error", error);
 //       });
 //   };
 // };
-// export const addPatient = postdata => {
-//   return async dispatch => {
-//     // dispatch(addTodoStarted());
 
-//     const googleData = await JSON.parse(await getData("userInfo"));
-//     console.log("post data combined patient", {
-//       ...postdata,
-//       googleData
-//     });
-//     api
-//       .post("/patient/add", { ...postdata, googleData })
-//       .then(val => {
-//         console.log("doneee", val.data);
-//         dispatch({ type: ADD_PATIENT, payload: val.data });
-//       })
-//       .catch(function(error) {
-//         // handle error
-//         console.log("post patient error", error);
-//       });
-//   };
-// };
 export const loadFont = () => {
   return {
     type: LOAD_FONT,
     payload: true
+  };
+};
+export const loading = loadingCase => {
+  return {
+    type: "LOADING",
+    payload: loadingCase
+  };
+};
+export const storeUserData = data => {
+  return {
+    type: "STORE_USER_DATA",
+    payload: data
   };
 };

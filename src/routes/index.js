@@ -13,7 +13,7 @@ export default createAppContainer(
       hospital: Hospital
     },
     {
-      initialRouteName: "hospital"
+      initialRouteName: "auth"
     }
   )
 );

@@ -1,7 +1,7 @@
 import { createStackNavigator } from "react-navigation";
 import LoginScreen from "../screens/auth/LoginScreen";
 import PatientRegister from "../screens/auth/PatientRegister";
-import HospitalRegister from "../screens/auth/HospitalRegister"
+import HospitalRegister from "../screens/auth/HospitalRegister";
 import ChoiceScreen from "../screens/auth/ChoiceScreen";
 
 import { Platform, StatusBar } from "react-native";
@@ -14,10 +14,10 @@ const authStack = createStackNavigator(
     login: LoginScreen,
     patientRegister: PatientRegister,
     hospitalRegister: HospitalRegister,
-    choice: ChoiceScreen,
+    choice: ChoiceScreen
   },
   {
-    initialRouteName: "choice",
+    initialRouteName: "login",
     defaultNavigationOptions: {
       title: "login"
     }

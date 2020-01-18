@@ -84,7 +84,7 @@ export default class CardImageExample extends Component {
           }}
         >
           <Left>
-            <Thumbnail source={require("../../assets/doc.png")} />
+            <Thumbnail source={require("../../assets/guy.png")} />
             <Body>
               <Text>Patient Name</Text>
               <Text note>AGE/M</Text>

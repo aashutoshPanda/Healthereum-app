@@ -1,9 +1,10 @@
 import { createBottomTabNavigator } from "react-navigation";
+import React from "react";
 import MyAppointments from "../screens/doctor/MyAppointments";
 import Search from "../screens/doctor/Search";
 
 import { Platform, StatusBar } from "react-native";
-import { Icon, } from "native-base";
+import { Icon } from "native-base";
 
 import { createStackNavigator } from "react-navigation";
 import DetailScreen from "../screens/patient/DetailScreenPatient";
@@ -44,23 +45,15 @@ const Doctor = createBottomTabNavigator(
     }
   },
   {
-    defaultNavigationOptions: ({ navigation })=>({
-      tabBarIcon: ({focused, horizontal, tintColor }) => {
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
         const { routename } = navigation.state;
-        if( routename == 'MyAppointments'){
-          return (
-            <Icon 
-              type="FontAwesome" 
-              name="home" />
-          );
+        if (routename == "MyAppointments") {
+          return <Icon type="FontAwesome" name="home" />;
         } else {
-          return (
-            <Icon
-              type="EvilIcons"
-              name="search"/>
-          );
+          return <Icon type="EvilIcons" name="search" />;
         }
-      },
+      }
     }),
     tabBarOptions: {
       style: {
