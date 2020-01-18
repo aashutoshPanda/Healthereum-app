@@ -22,7 +22,8 @@ class HospitalRegister extends Component {
     address: "",
     email: "",
     unique_id: "",
-    token: ""
+    token: "",
+    state: ""
   };
   register = () => {
     const primaryData = {
@@ -65,6 +66,7 @@ class HospitalRegister extends Component {
       .post("/hospital/profile/", secondaryData)
       .then(val => {
         console.log("register part two success", val.data);
+        this.props.navigation.navigate("hospital");
       })
       .catch(function(error) {
         console.log("register error part two", error);
@@ -142,7 +144,7 @@ class HospitalRegister extends Component {
             <Item floatingLabel>
               <Label>State</Label>
               <Input
-                onChangeText={text => this.setState({ pincode: state })}
+                onChangeText={text => this.setState({ state: text })}
                 value={this.state.state}
               />
             </Item>
