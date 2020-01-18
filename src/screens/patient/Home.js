@@ -4,17 +4,34 @@ import PatientHeader from "../../components/PatientHeader";
 import { Container, Content } from "native-base";
 import SearchBar from "../../components/SearchBar";
 import HospitalCard from "../../components/HospitalCard";
-const Home = () => {
-  return (
-    <Container style={styles.Container}>
-      <PatientHeader />
-      <Content padder>
-        <SearchBar />
-        <HospitalCard />
-      </Content>
-    </Container>
-  );
-};
+import { Font } from "expo";
+class Home extends React.Component {
+  state = {
+    fontLoaded: false
+  };
+  async componentDidMount() {
+    await Font.loadAsync({
+      Roboto: require("../../../assets/fonts/Roboto.ttf"),
+      Roboto_medium: require("../../../assets/fonts/Roboto_medium.ttf"),
+      ionicons: require("../../../assets/fonts/Ionicons.ttf")
+    });
+    this.setState({ fontLoaded: true });
+  }
+  render() {
+    if (this.state.fontLoaded == false) {
+      return null;
+    }
+    return (
+      <Container style={styles.Container}>
+        <PatientHeader />
+        <Content padder>
+          <SearchBar />
+          <HospitalCard />
+        </Content>
+      </Container>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   text: {
