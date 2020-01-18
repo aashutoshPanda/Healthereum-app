@@ -1,5 +1,8 @@
 import { createStackNavigator } from "react-navigation";
 import LoginScreen from "../screens/auth/LoginScreen";
+import PatientRegister from "../screens/auth/PatientRegister";
+import HospitalRegister from "../screens/auth/HospitalRegister"
+import ChoiceScreen from "../screens/auth/ChoiceScreen";
 
 import { Platform, StatusBar } from "react-native";
 const headerStyle = {
@@ -8,10 +11,13 @@ const headerStyle = {
 
 const authStack = createStackNavigator(
   {
-    login: LoginScreen
+    login: LoginScreen,
+    patientRegister: PatientRegister,
+    hospitalRegister: HospitalRegister,
+    choice: ChoiceScreen,
   },
   {
-    initialRouteName: "login",
+    initialRouteName: "choice",
     defaultNavigationOptions: {
       title: "login"
     }
