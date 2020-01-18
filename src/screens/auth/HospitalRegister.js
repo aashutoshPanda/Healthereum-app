@@ -13,6 +13,8 @@ import {
 import { StyleSheet } from "react-native";
 import api from "../../api";
 import axios from "axios";
+import { connect } from "react-redux";
+import { login, loading, storeUserData } from "../../actions";
 class HospitalRegister extends Component {
   state = {
     username: "",
@@ -37,13 +39,13 @@ class HospitalRegister extends Component {
       .post("/user/register", primaryData)
       .then(val => {
         console.log("register part one success", val.data);
-        this.registerTwo(val.data.token.key);
+        this.registerTwo(val.data.token.key, primaryData);
       })
       .catch(function(error) {
         console.log("register error part two failed", error);
       });
   };
-  registerTwo = key => {
+  registerTwo = (key, primaryData) => {
     const secondaryData = {
       unique_id: this.state.unique_id,
       name: this.state.name,
@@ -54,6 +56,7 @@ class HospitalRegister extends Component {
       city: this.state.city,
       state: this.state.state
     };
+
     // console.log("sec data", secondaryData);
     this.setState({ token: key });
     let headers = { "Content-Type": "application/json" };
@@ -66,6 +69,14 @@ class HospitalRegister extends Component {
       .post("/hospital/profile/", secondaryData)
       .then(val => {
         console.log("register part two success", val.data);
+        const userData = {
+          ...primaryData,
+          ...secondaryData,
+          token: key,
+          id: val.data.id
+        };
+        this.props.storeUserData(userData);
+        console.log("from redux state", this.props.auth.user);
         this.props.navigation.navigate("hospital");
       })
       .catch(function(error) {
@@ -193,4 +204,21 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HospitalRegister;
+const mapDispatchToProps = dispatch => {
+  return {
+    login: data => {
+      dispatch(login(data));
+    },
+    loading: caseLoading => {
+      dispatch(loading(caseLoading));
+    },
+    storeUserData: data => {
+      dispatch(storeUserData(data));
+    }
+  };
+};
+const mapStateToProps = state => {
+  const { app, auth } = state;
+  return { app, auth };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(HospitalRegister);
