@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     fontSize: 30
   },
   Container: {
-    paddingTop: 22
+    paddingTop: 24
   },
   Header: {
     height: 70
