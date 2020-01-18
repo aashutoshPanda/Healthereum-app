@@ -1,9 +1,36 @@
-import React from "react";
-import { Container, Header, Content, Form, Item, Input, Label, Button, Text, View } from 'native-base';
-import {  StyleSheet } from "react-native";
+import React, { Component } from "react";
+import {
+  Container,
+  Header,
+  Content,
+  Form,
+  Item,
+  Input,
+  Label,
+  Button,
+  Text,
+  View
+} from "native-base";
+import { StyleSheet } from "react-native";
+import { Font } from "expo";
 
-const PatientRegister = () => {
-  return (
+class PatientRegister extends Component {
+  state = {
+    fontLoaded: false
+  };
+  async componentDidMount() {
+    await Font.loadAsync({
+      Roboto: require("../../../assets/fonts/Roboto.ttf"),
+      Roboto_medium: require("../../../assets/fonts/Roboto_medium.ttf"),
+      ionicons: require("../../../assets/fonts/Ionicons.ttf")
+    });
+    this.setState({ fontLoaded: true });
+  }
+  render() {
+    if (this.state.fontLoaded == false) {
+      return null;
+    }
+    return (
       <Container style={styles.container}>
         <Content>
           <Form>
@@ -31,11 +58,11 @@ const PatientRegister = () => {
               <Label>Confirm Password</Label>
               <Input />
             </Item>
-            <View style={ styles.button }>
-              <Button rounded style={ styles.submit }>
+            <View style={styles.button}>
+              <Button rounded style={styles.submit}>
                 <Text>Sign in</Text>
               </Button>
-              <Button rounded style={ styles.submit }>
+              <Button rounded style={styles.submit}>
                 <Text>Register</Text>
               </Button>
             </View>
@@ -43,29 +70,29 @@ const PatientRegister = () => {
         </Content>
       </Container>
     );
-
-};
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignContent: 'center',
-    alignSelf: 'center',
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center",
+    alignSelf: "center"
   },
   input: {
     padding: 5,
-    margin: 5,
+    margin: 5
   },
   button: {
-    flexDirection: 'row',
+    flexDirection: "row"
   },
   submit: {
     margin: 20,
     paddingHorizontal: 10,
     paddingVertical: 5,
-    alignSelf: 'auto',
+    alignSelf: "auto"
   }
 });
 

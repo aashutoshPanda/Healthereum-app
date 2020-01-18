@@ -62,6 +62,9 @@ class LoginScreen extends Component {
         console.log("login  error", error);
       });
   };
+  register = () => {
+    this.props.navigation.navigate("choice");
+  };
   render() {
     if (this.state.fontLoaded == false) {
       return null;
@@ -104,7 +107,13 @@ class LoginScreen extends Component {
             <Right>
               <CardItem>
                 <Body>
-                  <Button rounded style={styles.submit}>
+                  <Button
+                    rounded
+                    style={styles.submit}
+                    onPress={() => {
+                      this.register();
+                    }}
+                  >
                     <Text>Register</Text>
                   </Button>
                 </Body>

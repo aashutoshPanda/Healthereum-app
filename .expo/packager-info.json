@@ -1,9 +1,9 @@
 {
-  "expoServerPort": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://wj-972.aashutoshpanda.healthereum.exp.direct",
+  "packagerNgrokUrl": "https://packager.wj-972.aashutoshpanda.healthereum.exp.direct",
+  "ngrokPid": 13063,
   "devToolsPort": 19002,
-  "packagerPort": null,
-  "packagerPid": null
+  "packagerPort": 19003,
+  "packagerPid": 13027
 }
