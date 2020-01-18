@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from "react-navigation";
-import React from 'react';
+import React from "react";
 import MyAppointments from "../screens/doctor/MyAppointments";
 import Search from "../screens/doctor/Search";
 import { Platform, StatusBar } from "react-native";
-import { Icon, } from "native-base";
+import { Icon } from "native-base";
 
 import { createStackNavigator } from "react-navigation";
 import DetailScreen from "../screens/patient/DetailScreenPatient";
@@ -52,7 +52,8 @@ const Doctor = createBottomTabNavigator({
             )
         }
     }
-}, {
+},
+{
     tabBarOptions: {
         inactiveTintColor: 'grey',
         activeTintColor: 'blue',

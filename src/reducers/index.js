@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import doctorReducer from "./doctorReducer";
-import patientReducer from "./patientReducer";
+import authReducer from "./authReducer";
+import appReducer from "./appReducer";
 
 export default combineReducers({
-  doctor: doctorReducer,
-  patient: patientReducer
+  auth: authReducer,
+  app: appReducer
 });
