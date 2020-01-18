@@ -2,18 +2,26 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { Container, Content } from "native-base";
 import HospitalHeader from "../../components/HospitalHeader";
-import Application from "../../components/ApplicationCard";
+import PatientResultCard from "../../components/PatientResultCard";
 import SearchBar from "../../components/SearchBar";
-const MyAppointments = () => {
-  return (
-    <Container style={styles.Container}>
-      <HospitalHeader />
-      <Content padder>
-        <SearchBar />
-      </Content>
-    </Container>
-  );
-};
+
+class SearchPatient extends React.Component {
+  onSelectPress = () => {
+    console.log("pressed select");
+    this.props.navigation.navigate("detail");
+  };
+  render() {
+    return (
+      <Container style={styles.Container}>
+        <HospitalHeader />
+        <Content padder>
+          <SearchBar />
+          <PatientResultCard selectPressFunction={this.onSelectPress} />
+        </Content>
+      </Container>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   text: {
@@ -30,4 +38,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MyAppointments;
+export default SearchPatient;

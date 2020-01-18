@@ -4,6 +4,29 @@ import RegisterDoctor from "../screens/hospital/RegisterDoctor";
 import SearchPatient from "../screens/hospital/SearchPatient";
 
 import { Platform, StatusBar } from "react-native";
+import { createStackNavigator } from "react-navigation";
+import DetailScreen from "../screens/patient/DetailScreenPatient";
+const headerStyle = {
+  marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+};
+
+const patientResultStack = createStackNavigator(
+  {
+    search: SearchPatient,
+    detail: DetailScreen
+  },
+  {
+    initialRouteName: "search",
+    defaultNavigationOptions: {
+      title: "DETAILS"
+    },
+    headerMode: "none"
+  },
+  {
+    style: headerStyle
+  }
+);
+
 const Hospital = createBottomTabNavigator(
   {
     Applications: {
@@ -19,7 +42,7 @@ const Hospital = createBottomTabNavigator(
       }
     },
     SearchPatient: {
-      screen: SearchPatient,
+      screen: patientResultStack,
       navigationOptions: {
         tabBarLabel: "SearchPatient"
       }

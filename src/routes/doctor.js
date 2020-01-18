@@ -5,6 +5,29 @@ import Search from "../screens/doctor/Search";
 import { Platform, StatusBar } from "react-native";
 import { Icon, } from "native-base";
 
+import { createStackNavigator } from "react-navigation";
+import DetailScreen from "../screens/patient/DetailScreenPatient";
+const headerStyle = {
+  marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+};
+
+const patientResultStack = createStackNavigator(
+  {
+    search: Search,
+    detail: DetailScreen
+  },
+  {
+    initialRouteName: "search",
+    defaultNavigationOptions: {
+      title: "DETAILS"
+    },
+    headerMode: "none"
+  },
+  {
+    style: headerStyle
+  }
+);
+
 const Doctor = createBottomTabNavigator(
   {
     MyAppointments: {
@@ -14,7 +37,7 @@ const Doctor = createBottomTabNavigator(
       }
     },
     Search: {
-      screen: Search,
+      screen: patientResultStack,
       navigationOptions: {
         tabBarLabel: "Search"
       }
