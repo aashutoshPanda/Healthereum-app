@@ -12,7 +12,10 @@ import {
   Right
 } from "native-base";
 import DoctorPicker from "../components/DoctorPicker";
-export default class CardImageExample extends Component {
+import { connect } from "react-redux";
+import { login, loading, storeUserData } from "../actions";
+import axios from "axios";
+class ApplicationCard extends Component {
   state = {
     fontLoaded: false
   };
@@ -31,6 +34,35 @@ export default class CardImageExample extends Component {
       showButtons: !this.state.showButtons
     });
   };
+  handleConfirm = docId => {
+    console.log("selected doc is with id = ", docId);
+    console.log("selected pat is with id = ", this.props.patientId);
+
+    const token = this.props.auth.user.token;
+    let headers = {
+      "Content-Type": "application/json"
+    };
+    headers["Authorization"] = token;
+    const axiosInstance = axios.create({
+      baseURL: "http://70532991.ngrok.io",
+      headers
+    });
+    const appointmentData = {
+      id: this.props.appointmentId,
+      status: true,
+      assigned_doctor: docId
+    };
+    axiosInstance
+      .patch("/hospital/appointments/", appointmentData)
+      .then(val => {
+        console.log("result from make appointment req", val.data);
+        this.props.makeReviewed(this.props.appointmentId);
+        // this.props.storeDocs(val.data);
+      })
+      .catch(function(error) {
+        console.log("error from making appointments", error);
+      });
+  };
   render() {
     if (this.state.fontLoaded == false) {
       return null;
@@ -43,7 +75,10 @@ export default class CardImageExample extends Component {
           borderBottomRightRadius: 20
         }}
       >
-        <DoctorPicker toggleFunction={this.toggle} />
+        <DoctorPicker
+          toggleFunction={this.toggle}
+          handleConfirm={this.handleConfirm}
+        />
       </CardItem>
     );
     const acceptDecline = (
@@ -85,14 +120,14 @@ export default class CardImageExample extends Component {
           <Left>
             <Thumbnail source={require("../../assets/guy.png")} />
             <Body>
-              <Text>Patient Name</Text>
-              <Text note>AGE/M</Text>
+              <Text>{this.props.name}</Text>
+              <Text note>{this.props.age + "/" + this.props.gender}</Text>
             </Body>
           </Left>
         </CardItem>
         <CardItem cardBody>
           <Body style={styles.address}>
-            <Text>(ILLNESS) Lorem ipsum dolor sit amet</Text>
+            <Text>{this.props.summary}</Text>
           </Body>
         </CardItem>
         {cardBottom}
@@ -109,3 +144,22 @@ const styles = StyleSheet.create({
     borderRadius: 20
   }
 });
+// export default MyAppointments;
+const mapDispatchToProps = dispatch => {
+  return {
+    login: data => {
+      dispatch(login(data));
+    },
+    loading: caseLoading => {
+      dispatch(loading(caseLoading));
+    },
+    storeUserData: data => {
+      dispatch(storeUserData(data));
+    }
+  };
+};
+const mapStateToProps = state => {
+  const { app, auth } = state;
+  return { app, auth };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(ApplicationCard);

@@ -11,6 +11,6 @@ export default createAppContainer(
         doctor: Doctor,
         hospital: Hospital
     }, {
-        initialRouteName: "doctor",
+        initialRouteName: "auth",
     })
 );

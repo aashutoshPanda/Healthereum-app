@@ -1,7 +1,8 @@
 import { AsyncStorage } from "react-native";
 export const setData = async (key, val) => {
   try {
-    await AsyncStorage.setItem(key, val);
+    const stringValue = JSON.stringify(val);
+    await AsyncStorage.setItem(key, stringValue);
   } catch (error) {
     console.log("error storing token", error);
   }
@@ -10,6 +11,7 @@ export const setData = async (key, val) => {
 export const getData = async key => {
   try {
     const result = await AsyncStorage.getItem(key);
+    // result = JSON.parse(result);
     return result;
   } catch (error) {
     console.log("error retreiving token", error);

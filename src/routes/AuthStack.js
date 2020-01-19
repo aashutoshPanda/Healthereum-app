@@ -16,7 +16,7 @@ const authStack = createStackNavigator({
     hospitalRegister: HospitalRegister,
     choice: ChoiceScreen
 }, {
-    initialRouteName: "choice",
+    initialRouteName: "login",
     headerMode: 'none',
     navigationOptions: {
         headershown: false,

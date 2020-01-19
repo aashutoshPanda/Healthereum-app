@@ -1,12 +1,28 @@
-import React from "react";
+import React, { Component } from "react";
 import { Container, Card, Form, Item, Input, Label, Button, Text, View } from 'native-base';
 import {  StyleSheet } from "react-native";
+import { Font } from "expo";
 
-const PatientRegister = () => {
-  return (
-    <Container style={styles.container}>
-      <View style={styles.forground}>
-        <Card style={styles.card}>
+class PatientRegister extends Component {
+  state = {
+    fontLoaded: false
+  };
+  async componentDidMount() {
+    await Font.loadAsync({
+      Roboto: require("../../../assets/fonts/Roboto.ttf"),
+      Roboto_medium: require("../../../assets/fonts/Roboto_medium.ttf"),
+      ionicons: require("../../../assets/fonts/Ionicons.ttf")
+    });
+    this.setState({ fontLoaded: true });
+  }
+  render() {
+    if (this.state.fontLoaded == false) {
+      return null;
+    }
+    return ( 
+      <Container style={styles.container}>
+        <View style={styles.forground}>
+          <Card style={styles.card}>
           <Form>
             <Item floatingLabel>
               <Label>Username</Label>
@@ -45,8 +61,8 @@ const PatientRegister = () => {
         </View>
       </Container>
     );
-
-};
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -75,9 +91,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
   },
   register: {
-    flex: 1,
     margin: 10,
     paddingHorizontal: 10,
+    paddingVertical: 5,
   }
 });
 

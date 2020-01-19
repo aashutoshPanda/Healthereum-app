@@ -3,21 +3,27 @@ import { StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Container, Text } from "native-base";
 
 export default class ChoiceScreen extends Component {
-    static navigationOptions = {
-        title: "What defines you best ?"
-        // headerShown: false
-    };
+  static navigationOptions = {
+    title: "What defines you best ?"
+    // headerShown: false
+  };
 
-    render() {
+  render() {
     return (
         <Container style={ styles.container } >
             <Text style={styles.title}>What defines you best?</Text>
-            <TouchableOpacity>
-                <Image source={require("../../../assets/doc.png")} style={{ height: 200, width: 200, marginTop: 50, borderRadius: 25 }} />
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("hospitalRegister")}>
+                <Image 
+                  source={require("../../../assets/doc.png")} 
+                  style={{ height: 200, width: 200, marginTop: 50, borderRadius: 25 }} />
             </TouchableOpacity>
             <Text style={{ fontSize: 24}}>HOSPITAL</Text>
-            <TouchableOpacity>
-                <Image source={require('../../../assets/guy.png')} style={{ height: 200, width: 200, marginTop: 50, borderRadius: 25 }} />
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("patientRegister")}>
+                <Image 
+                source={require('../../../assets/guy.png')} 
+                style={{ height: 200, width: 200, marginTop: 50, borderRadius: 25 }} />
             </TouchableOpacity>
             <Text style={{ fontSize: 24}}>PATIENT</Text>
         </Container>

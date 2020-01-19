@@ -47,3 +47,22 @@ export const storeUserData = data => {
     payload: data
   };
 };
+
+export const storeDocs = docs => {
+  return {
+    type: "STORE_DOCS",
+    payload: docs
+  };
+};
+export const storeAppointments = appointments => {
+  return {
+    type: "STORE_APPOINTMENTS",
+    payload: appointments
+  };
+};
+export const setSearchTerm = term => {
+  return {
+    type: "SET_SEARCH_TERM",
+    payload: term
+  };
+};

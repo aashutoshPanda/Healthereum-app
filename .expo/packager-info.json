@@ -2,9 +2,8 @@
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://wj-972.anonymous.healthereum-app.exp.direct",
   "packagerNgrokUrl": "https://packager.wj-972.anonymous.healthereum-app.exp.direct",
-  "ngrokPid": 24655,
+  "ngrokPid": 13667,
   "devToolsPort": 19002,
-  "packagerPort": 19001,
-  "packagerPid": 24567,
-  "webpackServerPort": null
+  "packagerPort": 19003,
+  "packagerPid": 13577
 }
