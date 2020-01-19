@@ -13,11 +13,11 @@ const Home = () => {
   return (
     <Header style={styles.Header}>
       <Left>
-        <Thumbnail source={require("../../assets/doc.png")} />
+        <Thumbnail source={require("../../assets/guy.png")} />
       </Left>
       <Body style={styles.HeaderBody}>
-        <Text>Patient Name</Text>
-        <Text note>AGE/M</Text>
+        <Text>Sumit</Text>
+        <Text note>23</Text>
       </Body>
       <Right />
     </Header>

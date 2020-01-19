@@ -66,3 +66,10 @@ export const setSearchTerm = term => {
     payload: term
   };
 };
+
+export const setSearchResult = result => {
+  return {
+    type: "SET_SEARCH_RESULT",
+    payload: result
+  };
+};

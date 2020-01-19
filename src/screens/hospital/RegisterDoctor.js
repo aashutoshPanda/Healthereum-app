@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { Container, Content, Button, Text } from "native-base";
+import { Container, Content, Button, Text, Body, Right } from "native-base";
 import HospitalHeader from "../../components/HospitalHeader";
 import DoctorRegisterForm from "../../components/DoctorRegisterForm";
 import t from "tcomb-form-native";
@@ -56,15 +56,17 @@ class MyAppointments extends React.Component {
         <HospitalHeader />
         <Content padder>
           <Form ref={c => (this._form = c)} type={User} />
-          <Button
-            rounded
-            success
-            onPress={() => {
-              this.handleSubmit();
-            }}
-          >
-            <Text>REGISTER</Text>
-          </Button>
+          <Body>
+            <Button
+              rounded
+              success
+              onPress={() => {
+                this.handleSubmit();
+              }}
+            >
+              <Text>REGISTER</Text>
+            </Button>
+          </Body>
         </Content>
       </Container>
     );

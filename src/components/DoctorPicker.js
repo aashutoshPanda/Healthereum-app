@@ -41,11 +41,7 @@ class DoctorPicker extends Component {
             onValueChange={this.onValueChange.bind(this)}
           >
             {this.props.hospital.doctorList.map(doc => (
-              <Picker.Item
-                key={doc.id}
-                label={"Dr. " + doc.name}
-                value={doc.id}
-              />
+              <Picker.Item key={doc.id} label={doc.name} value={doc.id} />
             ))}
           </Picker>
         </Form>

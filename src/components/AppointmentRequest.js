@@ -1,55 +1,56 @@
 import React, { Component } from "react";
-import { Image, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import {
-  Container,
-  Header,
-  Content,
   Card,
   CardItem,
   Thumbnail,
   Text,
   Button,
-  Icon,
   Left,
   Body,
   Right
 } from "native-base";
-export default class CardImageExample extends Component {
+export default class AppointmentRequest extends Component {
   render() {
     return (
       <Card style={styles.resultCard}>
-        <CardItem style={{ borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
+        <CardItem
+          style={{
+            borderTopLeftRadius: 20,
+            borderTopRightRadius: 20
+          }}
+        >
           <Left>
             <Thumbnail source={require("../../assets/doc.png")} />
             <Body>
-              <Text>{this.props.name}</Text>
-              <Text note>City</Text>
+              <Text>{this.props.data.name}</Text>
+              <Text note>{this.props.data.age}</Text>
             </Body>
           </Left>
         </CardItem>
         <CardItem cardBody>
           <Body style={styles.address}>
-            <Text>{this.props.address}</Text>
+            <Text>{this.props.data.disease}</Text>
           </Body>
         </CardItem>
         <CardItem
-          style={{ borderBottomLeftRadius: 20, borderBottomRightRadius: 20 }}
+          style={{
+            borderBottomLeftRadius: 20,
+            borderBottomRightRadius: 20
+          }}
         >
-          <Left>
-            <Text>{this.props.openingHours}</Text>
-          </Left>
-          <Right>
+          <Body>
             <Button
-              small
+              medium
               rounded
               success
               onPress={() => {
-                this.props.onSelect();
+                this.props.handleAccept();
               }}
             >
-              <Text>SELECT</Text>
+              <Text>START SESSION</Text>
             </Button>
-          </Right>
+          </Body>
         </CardItem>
       </Card>
     );

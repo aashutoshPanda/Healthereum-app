@@ -8,7 +8,7 @@ const Home = () => {
         <Thumbnail source={require("../../assets/doc.png")} />
       </Left>
       <Body style={styles.HeaderBody}>
-        <Title>HOSPITAL NAME</Title>
+        <Title>APOLLO </Title>
       </Body>
     </Header>
   );

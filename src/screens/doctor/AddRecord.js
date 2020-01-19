@@ -1,23 +1,48 @@
 import React from "react";
-import { Text, StyleSheet, View } from "react-native";
-import { Header } from "react-native-elements";
-const HomeScreen = () => {
-  return (
-    <View>
-      <Header
-        leftComponent={{ icon: "menu", color: "#fff" }}
-        centerComponent={{ text: "MY TITLE", style: { color: "#fff" } }}
-        rightComponent={{ icon: "home", color: "#fff" }}
-      />
-      <Text style={styles.text}>HomeScreen</Text>
-    </View>
-  );
-};
+import { StyleSheet } from "react-native";
+import { Container, Content } from "native-base";
+import DoctorHeader from "../../components/DoctorHeader";
+import { Font } from "expo";
+
+// galti ho gayi this is for doc not hospital
+class AddRecord extends React.Component {
+  state = {
+    fontLoaded: false
+  };
+  async componentDidMount() {
+    await Font.loadAsync({
+      Roboto: require("../../../assets/fonts/Roboto.ttf"),
+      Roboto_medium: require("../../../assets/fonts/Roboto_medium.ttf"),
+      ionicons: require("../../../assets/fonts/Ionicons.ttf")
+    });
+    this.setState({ fontLoaded: true });
+  }
+  render() {
+    if (this.state.fontLoaded == false) {
+      return null;
+    }
+    return (
+      <Container style={styles.Container}>
+        <DoctorHeader />
+        <Content padder></Content>
+      </Container>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   text: {
     fontSize: 30
+  },
+  Container: {
+    paddingTop: 24
+  },
+  Header: {
+    height: 70
+  },
+  HeaderBody: {
+    marginLeft: 20
   }
 });
 
-export default HomeScreen;
+export default AddRecord;

@@ -8,8 +8,8 @@ const DoctorHeader = () => {
         <Thumbnail source={require("../../assets/doc.png")} />
       </Left>
       <Body style={styles.HeaderBody}>
-        <Text>Doctor Name</Text>
-        <Text note>Degree</Text>
+        <Text>Ashutosh</Text>
+        <Text note>MBBS</Text>
       </Body>
       <Right />
     </Header>

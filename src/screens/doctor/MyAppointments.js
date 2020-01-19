@@ -2,13 +2,13 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { Container, Content } from "native-base";
 import DoctorHeader from "../../components/DoctorHeader";
-import Application from "../../components/ApplicationCard";
+import AppointmentRequest from "../../components/AppointmentRequest";
 import { Font } from "expo";
-
-// galti ho gayi this is for doc not hospital
+import axios from "axios";
 class MyAppointments extends React.Component {
   state = {
-    fontLoaded: false
+    fontLoaded: false,
+    applicationArray: []
   };
   async componentDidMount() {
     await Font.loadAsync({
@@ -17,7 +17,38 @@ class MyAppointments extends React.Component {
       ionicons: require("../../../assets/fonts/Ionicons.ttf")
     });
     this.setState({ fontLoaded: true });
+
+    let headers = {
+      "Content-Type": "application/json"
+    };
+    headers["Authorization"] = "8c716ebfae1ee711abf95f37fcc9e89a129df6a0";
+    const axiosInstance = axios.create({
+      baseURL: "http://70532991.ngrok.io",
+      headers
+    });
+    axiosInstance
+      .get("/user/doctor/appointments")
+      .then(val => {
+        console.log("recevied docs get doc's appointments ", val.data);
+        const applicationArray = val.data.map(item => {
+          return {
+            disease: item.disease,
+            name:
+              item.patient.user.first_name + " " + item.patient.user.last_name,
+            age: item.patient.age
+          };
+        });
+        console.log("application array", applicationArray);
+        this.setState({ applicationArray });
+      })
+      .catch(function(error) {
+        console.log("error from receiving docs", error);
+      });
   }
+  moveToNext = () => {
+    console.log("move");
+    this.props.navigation.navigate("detail");
+  };
   render() {
     if (this.state.fontLoaded == false) {
       return null;
@@ -26,7 +57,9 @@ class MyAppointments extends React.Component {
       <Container style={styles.Container}>
         <DoctorHeader />
         <Content padder>
-          <Application />
+          {this.state.applicationArray.map(item => (
+            <AppointmentRequest handleAccept={this.moveToNext} data={item} />
+          ))}
         </Content>
       </Container>
     );

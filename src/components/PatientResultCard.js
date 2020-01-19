@@ -18,36 +18,33 @@ export default class CardImageExample extends Component {
           <Left>
             <Thumbnail source={require("../../assets/doc.png")} />
             <Body>
-              <Text>Patient Name</Text>
-              <Text note>AGE/M</Text>
+              <Text>{this.props.name}</Text>
+              <Text note>{this.props.age}</Text>
             </Body>
           </Left>
         </CardItem>
         <CardItem cardBody>
           <Body style={styles.address}>
-            <Text>
-              (DESCRIPTION) Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit, sed do eiusmod tempor incididunt ut labore
-            </Text>
+            <Text>{this.props.address}</Text>
           </Body>
         </CardItem>
         <CardItem
           style={{ borderBottomLeftRadius: 20, borderBottomRightRadius: 20 }}
         >
-          <Left>
-            <Text>SOMETHING</Text>
-          </Left>
+          <Left></Left>
           <Right>
-            <Button
-              small
-              rounded
-              success
-              onPress={() => {
-                this.props.selectPressFunction();
-              }}
-            >
-              <Text>SELECT</Text>
-            </Button>
+            {this.props.showSelect ? (
+              <Button
+                small
+                rounded
+                success
+                onPress={() => {
+                  this.props.selectPressFunction();
+                }}
+              >
+                <Text>SELECT</Text>
+              </Button>
+            ) : null}
           </Right>
         </CardItem>
       </Card>
