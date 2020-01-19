@@ -15,6 +15,8 @@ import api from "../../api";
 import axios from "axios";
 import { connect } from "react-redux";
 import { login, loading, storeUserData } from "../../actions";
+import { setData } from "../../helper/asyncStore";
+// import HospitalDefault from "../../components/lotteHospitalDefault";
 class HospitalRegister extends Component {
   state = {
     username: "",
@@ -28,6 +30,7 @@ class HospitalRegister extends Component {
     state: ""
   };
   register = () => {
+    console.log("clicked register");
     const primaryData = {
       first_name: "",
       last_name: "",
@@ -38,6 +41,7 @@ class HospitalRegister extends Component {
     api
       .post("/user/register", primaryData)
       .then(val => {
+        console.log("val", val);
         console.log("register part one success", val.data);
         this.registerTwo(val.data.token.key, primaryData);
       })
@@ -62,7 +66,7 @@ class HospitalRegister extends Component {
     let headers = { "Content-Type": "application/json" };
     headers["Authorization"] = key;
     const axiosInstance = axios.create({
-      baseURL: "http://e6f0d320.ngrok.io",
+      baseURL: "http://70532991.ngrok.io",
       headers
     });
     axiosInstance
@@ -77,6 +81,7 @@ class HospitalRegister extends Component {
         };
         this.props.storeUserData(userData);
         console.log("from redux state", this.props.auth.user);
+        setData("userData", userData);
         this.props.navigation.navigate("hospital");
       })
       .catch(function(error) {
