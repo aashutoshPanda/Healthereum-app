@@ -23,9 +23,10 @@ class Home extends React.Component {
     }
     return (
       <Container style={styles.Container}>
-        <PatientHeader />
-        <Content padder>
           <SearchBar />
+        <Content padder>
+          <HospitalCard />
+          <HospitalCard />
           <HospitalCard />
         </Content>
       </Container>

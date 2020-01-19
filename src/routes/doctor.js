@@ -29,13 +29,13 @@ const Doctor = createBottomTabNavigator({
         screen: MyAppointments,
         navigationOptions: {
             tabBarLabel: "MyAppointments",
-            tabBarIcon: ({ tintColor }) => ( <
-                Icon style = {
+            tabBarIcon: ({ tintColor }) => ( 
+                <Icon style = {
                     { marginBottom: 35, marginTop: 10, color: tintColor }
                 }
                 color = 'activetintColor'
                 type = "FontAwesome"
-                name = "users" / >
+                name = "users" />
             )
         }
     },
@@ -56,7 +56,7 @@ const Doctor = createBottomTabNavigator({
 {
     tabBarOptions: {
         inactiveTintColor: 'grey',
-        activeTintColor: 'blue',
+        activeTintColor: '#15BB64',
         style: {
             paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
         }

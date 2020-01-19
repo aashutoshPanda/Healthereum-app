@@ -23,8 +23,9 @@ const styles = StyleSheet.create({
   },
   Header: {
     height: 70,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    backgroundColor: '#139942',
   },
   HeaderBody: {
     marginLeft: 20

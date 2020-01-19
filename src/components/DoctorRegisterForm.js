@@ -69,7 +69,7 @@ export default class DoctorRegisterForm extends Component {
         </Form>
         <CardItem style={styles.submitButton}>
           <Body>
-            <Button rounded success>
+            <Button rounded danger>
               <Text>REGISTER</Text>
             </Button>
           </Body>

@@ -8,8 +8,8 @@ const DoctorHeader = () => {
         <Thumbnail source={require("../../assets/doc.png")} />
       </Left>
       <Body style={styles.HeaderBody}>
-        <Text>Doctor Name</Text>
-        <Text note>Degree</Text>
+        <Text style={{ color: 'white', fontSize: 20}}>Doctor Name</Text>
+        <Text note style={{color: 'white'}}>Degree</Text>
       </Body>
       <Right />
     </Header>
@@ -25,8 +25,9 @@ const styles = StyleSheet.create({
   },
   Header: {
     height: 70,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20
+    backgroundColor: '#139942',
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0
   },
   HeaderBody: {
     marginLeft: 20

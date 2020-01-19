@@ -51,9 +51,13 @@ export default class CardImageExample extends Component {
         style={{
           borderBottomLeftRadius: 20,
           borderBottomRightRadius: 20
-        }}
-      >
+        }}>
         <Body>
+          <Button small rounded danger>
+            <Text>DECLINE</Text>
+          </Button>
+        </Body>
+        <Right>
           <Button
             small
             rounded
@@ -63,11 +67,6 @@ export default class CardImageExample extends Component {
             }}
           >
             <Text>ACCEPT</Text>
-          </Button>
-        </Body>
-        <Right>
-          <Button small rounded danger>
-            <Text>DECLINE</Text>
           </Button>
         </Right>
       </CardItem>

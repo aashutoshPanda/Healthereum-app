@@ -6,6 +6,9 @@ import SearchPatient from "../screens/hospital/SearchPatient";
 import { Platform, StatusBar } from "react-native";
 import { createStackNavigator } from "react-navigation";
 import DetailScreen from "../screens/patient/DetailScreenPatient";
+import React from 'react';
+import { Icon } from "native-base";
+
 const headerStyle = {
     marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
 };
@@ -27,19 +30,43 @@ const Hospital = createBottomTabNavigator({
     Applications: {
         screen: Applications,
         navigationOptions: {
-            tabBarLabel: "Applications"
+            tabBarLabel: "Applications",
+            tabBarIcon: ({ tintColor }) => ( <
+                Icon style = {
+                    { marginBottom: 35, marginTop: 10, color: tintColor }
+                }
+                color = 'activetintColor'
+                type = "MaterialCommunityIcons"
+                name = "application" / >
+            )
         }
     },
     RegisterDoctor: {
         screen: RegisterDoctor,
         navigationOptions: {
-            tabBarLabel: "RegisterDoctor"
+            tabBarLabel: "Register Doctor",
+            tabBarIcon: ({ tintColor }) => ( <
+                Icon style = {
+                    { marginBottom: 35, marginTop: 10, color: tintColor }
+                }
+                color = 'activetintColor'
+                type = "FontAwesome"
+                name = "users" / >
+            )
         }
     },
     SearchPatient: {
         screen: patientResultStack,
         navigationOptions: {
-            tabBarLabel: "SearchPatient"
+            tabBarLabel: "Search Patients",
+            tabBarIcon: ({ tintColor }) => ( <
+                Icon style = {
+                    { marginBottom: 35, marginTop: 10, color: tintColor }
+                }
+                color = 'activetintColor'
+                type = "FontAwesome"
+                name = "search" / >
+            )
         }
     }
 }, {

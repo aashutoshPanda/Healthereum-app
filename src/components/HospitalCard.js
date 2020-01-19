@@ -42,7 +42,7 @@ export default class CardImageExample extends Component {
             <Text>Opening Hours</Text>
           </Left>
           <Right>
-            <Button small rounded success>
+            <Button small rounded style={{backgroundColor: '#139942'}}>
               <Text>SELECT</Text>
             </Button>
           </Right>

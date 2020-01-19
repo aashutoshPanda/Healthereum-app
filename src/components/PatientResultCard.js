@@ -41,7 +41,7 @@ export default class CardImageExample extends Component {
             <Button
               small
               rounded
-              success
+              style={{backgroundColor: '#139942'}}
               onPress={() => {
                 this.props.selectPressFunction();
               }}

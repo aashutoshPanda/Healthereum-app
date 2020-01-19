@@ -1,11 +1,12 @@
 import React from "react";
-import { Container, Header, Content, Form, Item, Input, Label, Button, Text, View } from 'native-base';
+import { Container, Card, Form, Item, Input, Label, Button, Text, View } from 'native-base';
 import {  StyleSheet } from "react-native";
 
 const PatientRegister = () => {
   return (
-      <Container style={styles.container}>
-        <Content>
+    <Container style={styles.container}>
+      <View style={styles.forground}>
+        <Card style={styles.card}>
           <Form>
             <Item floatingLabel>
               <Label>Username</Label>
@@ -32,15 +33,16 @@ const PatientRegister = () => {
               <Input />
             </Item>
             <View style={ styles.button }>
-              <Button rounded style={ styles.submit }>
-                <Text>Sign in</Text>
+              <Button rounded danger style={ styles.register }>
+                <Text>Complete</Text>
               </Button>
-              <Button rounded style={ styles.submit }>
-                <Text>Register</Text>
+              <Button rounded danger style={ styles.submit }>
+                <Text>Sign in</Text>
               </Button>
             </View>
           </Form>
-        </Content>
+          </Card>
+        </View>
       </Container>
     );
 
@@ -49,23 +51,33 @@ const PatientRegister = () => {
 const styles = StyleSheet.create({
   container: {
     flex:1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignContent: 'center',
-    alignSelf: 'center',
+    justifyContent: "center",
+    backgroundColor: '#139942'
   },
-  input: {
-    padding: 5,
-    margin: 5,
+  forground: {
+    margin: 20,
+  },
+  card: {
+    borderRadius: 15,
+  },
+  form: {
+    padding: 20,
   },
   button: {
-    flexDirection: 'row',
+    marginTop: 30,
+    alignSelf: 'center',
+    alignContent: 'center',
   },
   submit: {
-    margin: 20,
+    flex: 1,
+    margin: 10,
+    marginBottom: 20,
+    paddingHorizontal: 30,
+  },
+  register: {
+    flex: 1,
+    margin: 10,
     paddingHorizontal: 10,
-    paddingVertical: 5,
-    alignSelf: 'auto',
   }
 });
 

@@ -5,15 +5,12 @@ import AuthStack from "./AuthStack";
 import Doctor from "./doctor";
 import Hospital from "./hospital";
 export default createAppContainer(
-  createSwitchNavigator(
-    {
-      patient: Patient,
-      auth: AuthStack,
-      doctor: Doctor,
-      hospital: Hospital
-    },
-    {
-      initialRouteName: "auth"
-    }
-  )
+    createSwitchNavigator({
+        patient: Patient,
+        auth: AuthStack,
+        doctor: Doctor,
+        hospital: Hospital
+    }, {
+        initialRouteName: "doctor",
+    })
 );

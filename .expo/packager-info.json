@@ -1,10 +1,10 @@
 {
-    "expoServerPort": null,
-    "expoServerNgrokUrl": null,
-    "packagerNgrokUrl": null,
-    "ngrokPid": null,
-    "devToolsPort": 19002,
-    "packagerPort": null,
-    "packagerPid": null,
-    "webpackServerPort": null
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://wj-972.anonymous.healthereum-app.exp.direct",
+  "packagerNgrokUrl": "https://packager.wj-972.anonymous.healthereum-app.exp.direct",
+  "ngrokPid": 24655,
+  "devToolsPort": 19002,
+  "packagerPort": 19001,
+  "packagerPid": 24567,
+  "webpackServerPort": null
 }

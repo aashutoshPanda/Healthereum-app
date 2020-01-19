@@ -3,8 +3,8 @@ import { StyleSheet } from "react-native";
 import { Card, CardItem, Text, Body, Right } from "native-base";
 const HistoryCard = () => {
   return (
-    <Card style={styles.Card}>
-      <CardItem header bordered>
+    <Card style={styles.card}>
+      <CardItem style={{ borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
         <Text>Hospital Name</Text>
       </CardItem>
       <CardItem bordered>
@@ -16,7 +16,7 @@ const HistoryCard = () => {
           </Text>
         </Body>
       </CardItem>
-      <CardItem footer bordered>
+      <CardItem footer style={{ borderBottomLeftRadius: 20, borderBottomRightRadius: 20 }}>
         <Text>Doctor Name</Text>
         <Right>
           <Text note>Date</Text>
@@ -27,8 +27,8 @@ const HistoryCard = () => {
 };
 
 const styles = StyleSheet.create({
-  Card: {
-    borderRadius: 0
+  card: {
+    borderRadius: 20
   }
 });
 

@@ -16,7 +16,7 @@ import {
 } from "native-base";
 import api from "../../api";
 import { connect } from "react-redux";
-import { StyleSheet } from "react-native";
+import { StyleSheet,View } from "react-native";
 import { Font } from "expo";
 import { login, loading, storeUserData } from "../../actions";
 import { AppLoading } from "expo";
@@ -71,57 +71,80 @@ class LoginScreen extends Component {
     }
 
     return (
-      <Container style={styles.container}>
-        <Content>
-          <Form>
-            <Item floatingLabel>
-              <Label>Username</Label>
-              <Input
-                onChangeText={text => this.setState({ username: text })}
-                value={this.state.username}
-              />
-            </Item>
-            <Item floatingLabel last>
-              <Label>Password</Label>
-              <Input
-                onChangeText={text => this.setState({ password: text })}
-                value={this.state.password}
-              />
-            </Item>
-            <Right>
-              <Button
-                rounded
-                style={styles.submit}
-                onPress={() => {
-                  this.submit();
-                }}
-              >
-                <Text>Submit</Text>
-              </Button>
-            </Right>
-          </Form>
-          <Card>
-            <Right>
-              <CardItem>
-                <Body>
-                  <Button rounded style={styles.submit}>
-                    <Text>Register</Text>
-                  </Button>
-                </Body>
-              </CardItem>
-            </Right>
+      <View style={styles.container}>
+        <View style={styles.forground}>
+          <Card style={styles.card}>
+            <Form>
+              <View style={styles.form}>
+                <Item floatingLabel>
+                  <Label>Username</Label>
+                  <Input
+                    onChangeText={text => this.setState({ username: text })}
+                    value={this.state.username}
+                  />
+                </Item>
+                <Item floatingLabel last>
+                  <Label>Password</Label>
+                  <Input
+                    onChangeText={text => this.setState({ password: text })}
+                    value={this.state.password}
+                  />
+                </Item>
+                <View style={styles.button}>
+                    <Button
+                      rounded
+                      danger
+                      style={styles.submit}
+                      onPress={() => {
+                        this.submit();
+                      }}>
+                    <Text>Log In</Text>
+                    </Button>
+                    <Text in>Don't have an account yet?</Text>
+                    <Button danger rounded style={styles.register}>
+                      <Text>Register</Text>
+                    </Button>
+                  </View>
+                </View>
+            </Form>
           </Card>
-        </Content>
-      </Container>
+        </View>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {},
-  input: {},
-  button: {},
-  submit: {}
+  container: {
+    flex:1,
+    justifyContent: "center",
+    backgroundColor: '#139942'
+  },
+  forground: {
+    margin: 20,
+  },
+  card: {
+    borderRadius: 15,
+  },
+  form: {
+    padding: 20,
+  },
+  button: {
+    marginTop: 30,
+    alignSelf: 'center',
+    alignContent: 'center',
+  },
+  submit: {
+    flex: 1,
+    margin: 10,
+    marginBottom: 20,
+    paddingHorizontal: 30,
+  },
+  register: {
+    flex: 1,
+    margin: 10,
+    paddingHorizontal: 10,
+  }
 });
 const mapDispatchToProps = dispatch => {
   return {

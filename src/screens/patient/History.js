@@ -9,6 +9,8 @@ const History = () => {
       <PatientHeader />
       <Content padder>
         <HistoryCard />
+        <HistoryCard />
+        <HistoryCard />
       </Content>
     </Container>
   );

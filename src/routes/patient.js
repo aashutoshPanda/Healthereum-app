@@ -11,9 +11,9 @@ const Patient = createBottomTabNavigator(
     Home: {
       screen: Home,
       navigationOptions: {
-        tabBarLabel: "Home",
+        tabBarLabel: "Search Hospitals",
         tabBarIcon: ({ tintColor }) => (
-          <Icon style={{ marginBottom: 35, marginTop: 10, color: tintColor }} color='activetintColor' type="FontAwesome" name="home" />
+          <Icon style={{ marginBottom: 35, marginTop: 10, color: tintColor }} color='activetintColor' type="FontAwesome" name="search" />
           )
       }
     },
@@ -26,25 +26,22 @@ const Patient = createBottomTabNavigator(
           )
       }
     },
-    Visits: {
-      screen: Visits,
-      navigationOptions: {
-        tabBarLabel: "Visits",
-        tabBarIcon: ({ tintColor }) => (
-          <Icon style={{ marginBottom: 35, marginTop: 10, color: tintColor }} color='activetintColor' type="FontAwesome" name="users" />
-          )
-      }
-    }
   },
   {
     tabBarOptions: {
       inactiveTintColor: 'grey',
-      activeTintColor: 'blue',
+      activeTintColor: '#15BB64',
       style: {
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
       }
     }
-  }
+  }, {
+    initialRouteName: "Home",
+    headerMode: 'none',
+    navigationOptions: {
+        headershown: false,
+    },
+}
 );
 
 export default Patient;

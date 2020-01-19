@@ -6,25 +6,23 @@ import ChoiceScreen from "../screens/auth/ChoiceScreen";
 
 import { Platform, StatusBar } from "react-native";
 const headerStyle = {
-  marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+    currentHeight: 0,
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
 };
 
-const authStack = createStackNavigator(
-  {
+const authStack = createStackNavigator({
     login: LoginScreen,
     patientRegister: PatientRegister,
     hospitalRegister: HospitalRegister,
     choice: ChoiceScreen
-  },
-  {
-    initialRouteName: "login",
-    defaultNavigationOptions: {
-      title: "login"
-    }
-  },
-  {
+}, {
+    initialRouteName: "choice",
+    headerMode: 'none',
+    navigationOptions: {
+        headershown: false,
+    },
+}, {
     style: headerStyle
-  }
-);
+});
 
 export default authStack;
